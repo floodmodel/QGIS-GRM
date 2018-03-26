@@ -8,16 +8,16 @@
 
 [general]
 name=GRM
-qgisMinimumVersion=2.0
+qgisMinimumVersion=2.18
 description=GRM Plugin
-version=0.1.4
-author=Hermesys
+version=0.1.5
+author=KICT, Hermesys
 email=shpark@hermesys.co.kr
 
-about=GRM Plugin
+about=Beta GRM Plugin
 
-tracker=test
-repository=test
+#tracker=test
+#repository=test
 # End of mandatory metadata
 
 # Recommended items:
@@ -26,9 +26,9 @@ repository=test
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=test
+tags=GRM
 
-homepage=test
+homepage=https://github.com/floodmodel/QGIS-GRM
 category=Plugins
 icon=icon.png
 # experimental flag

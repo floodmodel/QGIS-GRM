@@ -10,7 +10,7 @@ import utils
 import numpy as np
 
 
-def get_flow_layer(fd_layer, canvas, stream_layer):
+def get_flow_layer(fd_layer, canvas, stream_layer,strFDType):
     asc_file_fd = fd_layer.dataProvider().dataSourceUri()
     ascii_grid_fd = np.loadtxt(asc_file_fd, skiprows=6)  # skip 6 . caution!
 
@@ -33,15 +33,14 @@ def get_flow_layer(fd_layer, canvas, stream_layer):
 
     point_layer.startEditing()  # if omitted , setAttributes has no effect.
 
-    strFDType = 'a'  # Reference : GRM Manual page 25 . 2018.3
-
-    if strFDType == 'a':
+    # Reference : GRM Manual page 25  a b c d . 2018.3
+    if strFDType == 'StartsFromN':
         MyDirections = {1: 0, 2: 45, 4: 90, 8: 135, 16: 180, 32: 225, 64: 270, 128: 315}
-    elif strFDType == 'b':
+    elif strFDType == 'StartsFromNE':
         MyDirections = {128: 0, 1: 45, 2: 90, 4: 135, 8: 180, 16: 225, 32: 270, 64: 315}  # HyGIS(O)
-    elif strFDType == 'c':
+    elif strFDType == 'StartsFromE':
         MyDirections = {64: 0, 128: 45, 1: 90, 2: 135, 4: 180, 8: 225, 16: 270, 32: 315}  # HyGIS(x). TOPAZ
-    elif strFDType == 'd':
+    elif strFDType == 'StartsFromE_TauDEM':
         MyDirections = {3: 0, 2: 45, 1: 90, 8: 135, 7: 180, 6: 225, 5: 270, 4: 315}  # TauDEM
     else:
         print "FD Code is Wrong!"

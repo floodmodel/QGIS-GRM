@@ -2817,7 +2817,8 @@ class Watershed_StetupDialog(QtGui.QDialog, FORM_CLASS):
             self.layer2 = QgsRasterLayer(FD, "FD", "gdal")
             self.layer3 = QgsRasterLayer(ST, "ST", "gdal")
 
-            self.flow_direction = get_flow_layer(self.layer2, self.mapcanvas, self.layer3)
+            strFDType = GRM._xmltodict['GRMProject']['ProjectSettings']['FlowDirectionType']
+            self.flow_direction = get_flow_layer(self.layer2, self.mapcanvas, self.layer3,strFDType)
 
             #  신규 소스
     #         self.flow_direction_layer = get_flow_layer(self.layer2, self.mapcanvas, self.layer3)
