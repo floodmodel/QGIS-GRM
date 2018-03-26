@@ -3537,45 +3537,115 @@ class CanvasTool(QgsMapTool):
         # Cell Info Landcover 그룹 박스 테이터 내용
         Landcover_Result = _wsinfo.landCoverValue(x,y)
 
-        projectFile = GRM._xmltodict['GRMProject']['ProjectSettings']['ProjectFile']
-        doc = ET.parse(projectFile)
-        root = doc.getroot()
+        # projectFile = GRM._xmltodict['GRMProject']['ProjectSettings']['ProjectFile']
+        # doc = ET.parse(projectFile)
+        # root = doc.getroot()
+        # for element in root.findall('{http://tempuri.org/GRMProject.xsd}GreenAmptParameter'):
+        #    GridValue = element.findtext("{http://tempuri.org/GRMProject.xsd}GridValue")
+        #    if str(Texture_Result) == GridValue:
+        #        GRMCode = element.findtext("{http://tempuri.org/GRMProject.xsd}GRMCode")
+        #        Porosity = element.findtext("{http://tempuri.org/GRMProject.xsd}Porosity")
+        #        EffectivePorosity = element.findtext("{http://tempuri.org/GRMProject.xsd}EffectivePorosity")
+        #        WFSoilSuctionHead = element.findtext("{http://tempuri.org/GRMProject.xsd}WFSoilSuctionHead")
+        #        HydraulicConductivity = element.findtext("{http://tempuri.org/GRMProject.xsd}HydraulicConductivity")
+
+        #        _util.GlobalControl_texture_SetValue(GridValue,GRMCode, Porosity, EffectivePorosity,WFSoilSuctionHead,HydraulicConductivity)
+        #        break
+        #    elif Texture_Result is None or Texture_Result=="":
+        #        break
+
+        # for element in root.findall('{http://tempuri.org/GRMProject.xsd}SoilDepth'):
+        #     GridValue=element.findtext("{http://tempuri.org/GRMProject.xsd}GridValue")
+        #     if str(Depth_Result)==GridValue:
+        #         UserDepthClass=element.findtext("{http://tempuri.org/GRMProject.xsd}GRMCode")
+        #         SoilDepth=element.findtext("{http://tempuri.org/GRMProject.xsd}SoilDepth")
+        #         _util.GlobalControl_Depth_SetValue(GridValue, UserDepthClass, SoilDepth)
+        #         break
+        #     elif Depth_Result is None or Depth_Result=="":
+        #         break
+        #
+
+
+
         # 메모리에서 불러오는 것으로 변경 해야함 우선은 진행
-
-        for element in root.findall('{http://tempuri.org/GRMProject.xsd}GreenAmptParameter'):
-            GridValue = element.findtext("{http://tempuri.org/GRMProject.xsd}GridValue")
+        if GRM._GreenAmptCount >1:
+            for GreenAmpt in GRM._xmltodict['GRMProject']['GreenAmptParameter']:
+                GridValue = GreenAmpt['GridValue']
+                if str(Texture_Result) == GridValue:
+                    GRMCode = GreenAmpt['GRMCode']
+                    Porosity = GreenAmpt['Porosity']
+                    EffectivePorosity = GreenAmpt['EffectivePorosity']
+                    WFSoilSuctionHead = GreenAmpt['WFSoilSuctionHead']
+                    HydraulicConductivity = GreenAmpt['HydraulicConductivity']
+                    _util.GlobalControl_texture_SetValue(GridValue,GRMCode, Porosity, EffectivePorosity,WFSoilSuctionHead,HydraulicConductivity)
+                    break
+                elif Texture_Result is None or Texture_Result=="":
+                    break
+        elif GRM._GreenAmptCount ==1:
+            GridValue = GRM._xmltodict['GRMProject']['GreenAmptParameter']['GridValue']
             if str(Texture_Result) == GridValue:
-                GRMCode = element.findtext("{http://tempuri.org/GRMProject.xsd}GRMCode")
-                Porosity = element.findtext("{http://tempuri.org/GRMProject.xsd}Porosity")
-                EffectivePorosity = element.findtext("{http://tempuri.org/GRMProject.xsd}EffectivePorosity")
-                WFSoilSuctionHead = element.findtext("{http://tempuri.org/GRMProject.xsd}WFSoilSuctionHead")
-                HydraulicConductivity = element.findtext("{http://tempuri.org/GRMProject.xsd}HydraulicConductivity")
-
-                _util.GlobalControl_texture_SetValue(GridValue,GRMCode, Porosity, EffectivePorosity,WFSoilSuctionHead,HydraulicConductivity)
-                break
-            elif Texture_Result is None or Texture_Result=="":
-                break
+                GRMCode = GRM._xmltodict['GRMProject']['GreenAmptParameter']['GRMCode']
+                Porosity = GRM._xmltodict['GRMProject']['GreenAmptParameter']['Porosity']
+                EffectivePorosity = GRM._xmltodict['GRMProject']['GreenAmptParameter']['EffectivePorosity']
+                WFSoilSuctionHead = GRM._xmltodict['GRMProject']['GreenAmptParameter']['WFSoilSuctionHead']
+                HydraulicConductivity = GRM._xmltodict['GRMProject']['GreenAmptParameter']['HydraulicConductivity']
+                _util.GlobalControl_texture_SetValue(GridValue, GRMCode, Porosity, EffectivePorosity, WFSoilSuctionHead,HydraulicConductivity)
 
 
-        for element in root.findall('{http://tempuri.org/GRMProject.xsd}SoilDepth'):
-            GridValue=element.findtext("{http://tempuri.org/GRMProject.xsd}GridValue")
-            if str(Depth_Result)==GridValue:
-                UserDepthClass=element.findtext("{http://tempuri.org/GRMProject.xsd}GRMCode")
-                SoilDepth=element.findtext("{http://tempuri.org/GRMProject.xsd}SoilDepth")
-                _util.GlobalControl_Depth_SetValue(GridValue, UserDepthClass, SoilDepth)
-                break
-            elif Depth_Result is None or Depth_Result=="":
-                break
 
-        # 최박사님과 협의 할것 (2018 03 04)
-        for element in root.findall('{http://tempuri.org/GRMProject.xsd}LandCover'):
-            GridValue = element.findtext("{http://tempuri.org/GRMProject.xsd}GridValue")
-            if str(Landcover_Result)== GridValue:
-                GRMCode = element.findtext("{http://tempuri.org/GRMProject.xsd}GRMCode")
-                RoughnessCoefficient = element.findtext("{http://tempuri.org/GRMProject.xsd}RoughnessCoefficient")
-                ImperviousRatio = element.findtext("{http://tempuri.org/GRMProject.xsd}ImperviousRatio")
-                _util.GlobalControl_Landcover_SetValue(GridValue,GRMCode,RoughnessCoefficient,ImperviousRatio)
-                break
+        if GRM._SoilDepthCount>1:
+            for SoilDepth in GRM._xmltodict['GRMProject']['SoilDepth']:
+                GridValue = SoilDepth['GridValue']
+                if str(Depth_Result) == GridValue:
+                    GRMCode = SoilDepth['GRMCode']
+                    SoilDepth=SoilDepth['SoilDepth']
+                    _util.GlobalControl_Depth_SetValue(GridValue, GRMCode, SoilDepth)
+                    break
+                elif Depth_Result is None or Depth_Result=="":
+                    break
+
+        elif GRM._SoilDepthCount==1:
+            GridValue = GRM._xmltodict['GRMProject']['SoilDepth']['GridValue']
+            if str(Depth_Result) == GridValue:
+                GRMCode =  GRM._xmltodict['GRMProject']['SoilDepth']['GRMCode']
+                SoilDepth =  GRM._xmltodict['GRMProject']['SoilDepth']['SoilDepth']
+                _util.GlobalControl_Depth_SetValue(GridValue, GRMCode, SoilDepth)
+
+
+
+        if GRM._LandCoverCount>1:
+            for LandCover in GRM._xmltodict['GRMProject']['LandCover']:
+                GridValue = LandCover['GridValue']
+                if str(Landcover_Result) == GridValue:
+                    GRMCode = LandCover['GRMCode']
+                    RoughnessCoefficient = LandCover['RoughnessCoefficient']
+                    ImperviousRatio = LandCover['ImperviousRatio']
+                    _util.GlobalControl_Landcover_SetValue(GridValue,GRMCode,RoughnessCoefficient,ImperviousRatio)
+                    break
+                elif Landcover_Result is None or Landcover_Result == "":
+                    break
+
+        elif GRM._LandCoverCount==1:
+            GridValue = GRM._xmltodict['GRMProject']['LandCover']['GridValue']
+            if str(Depth_Result) == GridValue:
+                GRMCode = GRM._xmltodict['GRMProject']['LandCover']['GRMCode']
+                RoughnessCoefficient = GRM._xmltodict['GRMProject']['LandCover']['RoughnessCoefficient']
+                ImperviousRatio = GRM._xmltodict['GRMProject']['LandCover']['ImperviousRatio']
+                _util.GlobalControl_Landcover_SetValue(GridValue, GRMCode, RoughnessCoefficient, ImperviousRatio)
+
+
+
+
+
+        # # 최박사님과 협의 할것 (2018 03 04)
+        # for element in root.findall('{http://tempuri.org/GRMProject.xsd}LandCover'):
+        #     GridValue = element.findtext("{http://tempuri.org/GRMProject.xsd}GridValue")
+        #     if str(Landcover_Result)== GridValue:
+        #         GRMCode = element.findtext("{http://tempuri.org/GRMProject.xsd}GRMCode")
+        #         RoughnessCoefficient = element.findtext("{http://tempuri.org/GRMProject.xsd}RoughnessCoefficient")
+        #         ImperviousRatio = element.findtext("{http://tempuri.org/GRMProject.xsd}ImperviousRatio")
+        #         _util.GlobalControl_Landcover_SetValue(GridValue,GRMCode,RoughnessCoefficient,ImperviousRatio)
+        #         break
 
 
     def Point_To_RowColumn(self,point):
