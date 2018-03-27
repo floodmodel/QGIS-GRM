@@ -431,7 +431,18 @@ class GRMDockWidget(QtGui.QDockWidget, FORM_CLASS):
     def NewProjectFile(self):
         global _ProjectFile, _xmltodict
 
+        #2018-03-27
+        global _SubWatershedCount,_WatchPointCount,_FlowControlCount
+        global _GreenAmptCount,_SoilDepthCount,_LandCoverCount,_RainFallCount
+        _SubWatershedCount = 0
+        _WatchPointCount = 0
+        _FlowControlCount = 0
+        _GreenAmptCount = 0
+        _SoilDepthCount = 0
+        _LandCoverCount = 0
+        _RainFallCount=0
 
+        
         # New Project 시에 GMP 파일 새로 생성
         filename = QFileDialog.getSaveFileName(self, "select output file ", "", "*.gmp")
 

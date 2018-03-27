@@ -2850,7 +2850,8 @@ class Watershed_StetupDialog(QtGui.QDialog, FORM_CLASS):
         if self.chkFlowContorGird.isChecked():
             self.FlowContorGird_paint()
         if self.chkWatch_Point.isChecked():
-            self.watchpoint_paint()
+            if self.tbList.rowCount()!=0:
+                self.watchpoint_paint()
 
 
     # def MoveUp(self):
@@ -2892,12 +2893,13 @@ class Watershed_StetupDialog(QtGui.QDialog, FORM_CLASS):
     def MoveDown(self):
         row = self.tbList.currentRow()
         column = self.tbList.currentColumn()
-        if row < self.tbList.rowCount() - 1:
-            self.tbList.insertRow(row + 2)
-            for i in range(self.tbList.columnCount()):
-                self.tbList.setItem(row + 2, i, self.tbList.takeItem(row, i))
-                self.tbList.setCurrentCell(row + 2, column)
-            self.tbList.removeRow(row)
+        if row>=0:
+            if row < self.tbList.rowCount() - 1:
+                self.tbList.insertRow(row + 2)
+                for i in range(self.tbList.columnCount()):
+                    self.tbList.setItem(row + 2, i, self.tbList.takeItem(row, i))
+                    self.tbList.setCurrentCell(row + 2, column)
+                self.tbList.removeRow(row)
 
             #2017 -12-15 박: 추가 버튼 눌렀을때 Watchpoint table 에 데이터 추가 하기
     def Add_Selected_Cell(self):
@@ -3300,18 +3302,20 @@ class Watershed_StetupDialog(QtGui.QDialog, FORM_CLASS):
          #grid 그리기
     def draw_grid(self,x,y):
         marker = QgsVertexMarker(self.mapcanvas)
-        marker.setCenter(QgsPoint(float(x),float(y)))
+        marker.setCenter(QgsPoint(float(x), float(y)))
 
-        marker.setColor(QColor(255,0,0))
+        marker.setColor(QColor(255, 0, 0))
         scale = self.mapcanvas.scale()
-         #사이즈 조절함. 가능한 맞게 조정함
-        size = 750000.0 / scale
+        # 사이즈 조절함. 가능한 맞게 조정함
+        # size = 750000.0 / scale
+        map_width = self.mapcanvas.extent().xMaximum() - self.mapcanvas.extent().xMinimum()
+        size = (_xsize / 200.0) * 100000 / map_width
         marker.setIconSize(size)
         marker.setIconType(QgsVertexMarker.ICON_BOX)
         marker.setPenWidth(1)
         return marker
 
-     # Watch point 그림을 Rubberbanc로 처리 함
+    # Watch point 그림을 Rubberbanc로 처리 함
     def draw_grid2(self,x,y,btn):
         r = QgsRubberBand(self.mapcanvas, True)
         size=_xsize/2

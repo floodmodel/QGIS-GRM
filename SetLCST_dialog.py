@@ -768,90 +768,92 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
 
         # 1. 라디오 rbtUseConstLCAtt
         if self.rbtUseConstLCAtt.isChecked():
-            if True:
-                if self.Checktxtbox(self.txtCoefficient):
-                    if float(self.txtCoefficient.text()) < 0.0015 or 1.5 > float(self.txtCoefficient.text()):
-                        _util.MessageboxShowError("GRM", "{0}\n{1}".format(
-                            "[Land cover roughness coefficient] is invalid.",
-                            "0.0015<=Land cover roughness coefficient<=1.5"))
-                        self.txtCoefficient.setFocus()
-                        return
-                # else:
-                #     _util.MessageboxShowError("GRM", "{0}\n{1}".format(
-                #         "[Land cover roughness coefficient] is invalid.",
-                #         "0.0015<=Land cover roughness coefficient<=1.5"))
-                #     self.txtCoefficient.setFocus()
-                #     return
+            if self.Checktxtbox(self.txtCoefficient):
+                result=float(self.txtCoefficient.text())
+                if not(0.0015<=result and  result<=1.5):
+                    _util.MessageboxShowError("GRM", "{0}\n{1}".format(
+                        "[Land cover roughness coefficient] is invalid.",
+                        "0.0015<=Land cover roughness coefficient<=1.5"))
+                    self.txtCoefficient.setFocus()
+                    return
+            else :
+                _util.MessageboxShowError("GRM", "{0}\n{1}".format(
+                    "[Land cover roughness coefficient] is invalid.",
+                    "0.0015<=Land cover roughness coefficient<=1.5"))
+                self.txtCoefficient.setFocus()
+                return
 
-                if self.Checktxtbox(self.txtImpervious):
-                    if float(self.txtImpervious.text()) < 0 or 1 < float(self.txtImpervious.text()):
-                        _util.MessageboxShowError("GRM", "[Impervious ratio] is invalid. \n0<=Impervious ration<=1")
-                        self.txtImpervious.setFocus()
-                        return
-                else:
+
+            if self.Checktxtbox(self.txtImpervious):
+                result = float(self.txtImpervious.text())
+                if not( 0<= result and result<=1):
                     _util.MessageboxShowError("GRM", "[Impervious ratio] is invalid. \n0<=Impervious ration<=1")
                     self.txtImpervious.setFocus()
                     return
+            else:
+                _util.MessageboxShowError("GRM", "[Impervious ratio] is invalid. \n0<=Impervious ration<=1")
+                self.txtImpervious.setFocus()
+                return
 
         # 2. rbtUseConstTextureAtt 선택 시,
         if self.rbtUseConstTextureAtt.isChecked():
-            #             if self.txtPorosity.text().isnumeric() and self.txtPorosity.text() !="" :
-            if True:
-                if self.Checktxtbox(self.txtPorosity):
-                    if float(self.txtPorosity.text()) < 0 or 1 < float(self.txtPorosity.text()):
-                        _util.MessageboxShowError("GRM", "[Porosity] is invalid. \n0<=Porosity<=1")
-                        self.txtPorosity.setFocus()
-                        return
-                else:
+            if self.Checktxtbox(self.txtPorosity):
+                result=float(self.txtPorosity.text())
+                if not( 0<= result and result <=1 ):
                     _util.MessageboxShowError("GRM", "[Porosity] is invalid. \n0<=Porosity<=1")
                     self.txtPorosity.setFocus()
                     return
+            else:
+                _util.MessageboxShowError("GRM", "[Porosity] is invalid. \n0<=Porosity<=1")
+                self.txtPorosity.setFocus()
+                return
 
-                if (self.Checktxtbox(self.txtEffective_porosity)):
-                    if float(self.txtEffective_porosity.text()) < 0 or 1 < float(self.txtEffective_porosity.text()):
-                        _util.MessageboxShowError("GRM",
-                                                  '[Effective poropsity] is invalid. \n0<=Effective porosity<=1')
-                        self.txtEffective_porosity.setFocus()
-                        return
-                else:
-                    _util.MessageboxShowError("GRM", '[Effective poropsity] is invalid. \n0<=Effective porosity<=1')
+            if self.Checktxtbox(self.txtEffective_porosity):
+                result= float(self.txtEffective_porosity.text())
+                if not(0<= result and result<=1):
+                    _util.MessageboxShowError("GRM",'[Effective poropsity] is invalid. \n0<=Effective porosity<=1')
+                    self.txtEffective_porosity.setFocus()
                     return
+            else:
+                _util.MessageboxShowError("GRM", '[Effective poropsity] is invalid. \n0<=Effective porosity<=1')
+                self.txtEffective_porosity.setFocus()
+                return
 
-                if (self.Checktxtbox(self.txtSuction_head)):
-                    if float(self.txtSuction_head.text()) < 0 or 9999 < float(self.txtSuction_head.text()):
-                        _util.MessageboxShowError("GRM",
-                                                  '[Wetting front suction head] is invalid. \n0<=Wetting front suction head<=9999')
-                        self.txtSuction_head.setFocus()
-                        return
-                else:
-                    _util.MessageboxShowError("GRM",
-                                              '[Wetting front suction head] is invalid. \n0<=Wetting front suction head<=9999')
+            if self.Checktxtbox(self.txtSuction_head):
+                result = float(self.txtSuction_head.text())
+                if not(0<= result and result <=9999):
+                    _util.MessageboxShowError("GRM",'[Wetting front suction head] is invalid. \n0<=Wetting front suction head<=9999')
                     self.txtSuction_head.setFocus()
                     return
+            else:
+                _util.MessageboxShowError("GRM",'[Wetting front suction head] is invalid. \n0<=Wetting front suction head<=9999')
+                self.txtSuction_head.setFocus()
+                return
 
-                if (self.Checktxtbox(self.txtConductiovity)):
-                    if float(self.txtConductiovity.text()) < 0 or 1 < float(self.txtConductiovity.text()):
-                        _util.MessageboxShowError("GRM",'[Hydraulic conductivity] is invalid. \n0<=Hydraulic conductivity<=1')
-                        self.txtConductiovity.setFocus()
-                        return
-                else:
+            if self.Checktxtbox(self.txtConductiovity):
+                result = float(self.txtConductiovity.text())
+                if not(0<= result and result <=1):
                     _util.MessageboxShowError("GRM",'[Hydraulic conductivity] is invalid. \n0<=Hydraulic conductivity<=1')
                     self.txtConductiovity.setFocus()
-                    # 문제되는 곳에 focus
                     return
+            else:
+                _util.MessageboxShowError("GRM", '[Hydraulic conductivity] is invalid. \n0<=Hydraulic conductivity<=1')
+                self.txtConductiovity.setFocus()
+                return
 
         # 3.rbtUseConstDepth 체크
         if self.rbtUseConstDepth.isChecked():
-            if True:
-                if self.Checktxtbox(self.txtSoil_depth):
-                    if float(self.txtSoil_depth.text()) < 0 or 9999 < float(self.txtSoil_depth.text()):
-                        _util.MessageboxShowError("GRM", "[Soil Depth] is invalid.\n0<=Soil Depth<=9999")
-                        self.txtSoil_depth.setFocus()
-                        return
-                else:
+            if self.Checktxtbox(self.txtSoil_depth):
+                result = float(self.txtSoil_depth.text())
+                if not(0<= result and result <=9999):
                     _util.MessageboxShowError("GRM", "[Soil Depth] is invalid.\n0<=Soil Depth<=9999")
                     self.txtSoil_depth.setFocus()
                     return
+            else:
+                _util.MessageboxShowError("GRM", "[Soil Depth] is invalid.\n0<=Soil Depth<=9999")
+                self.txtSoil_depth.setFocus()
+                return
+
         # GMP 파일에 Lanccover,depth.. xml 생성
         self.DataSave()
         # _util.MessageboxShowInfo("Land cover / soil", "Land covers and soil attributes setup are completed.")
@@ -863,14 +865,18 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
 
     # QlineEdit 값 체크
     def Checktxtbox(self, textbox):
-        if textbox.text() != "" and textbox.text().isnumeric():
-            return textbox.text()
+        if textbox.text() != "" and self.isFloat(textbox.text()):
+            return True
         else:
             return False
     # 2017/10/11 CHO 여기까지----
 
-
-
+    def isFloat(self ,Snumber):
+        try:
+            float(Snumber)
+            return True
+        except ValueError:
+            return False
 
 
 
