@@ -11,7 +11,7 @@ name=GRM
 qgisMinimumVersion=2.18.13
 description=GRM Plugin
 version=0.1.6
-author=Hermesys
+author=KICT, Hermesys
 email=shpark@hermesys.co.kr
 
 about=GRM Plugin
