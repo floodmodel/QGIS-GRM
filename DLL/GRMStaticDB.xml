@@ -7118,4 +7118,44 @@
     <SoilTexture>양토</SoilTexture>
     <SoilDepth>얕음</SoilDepth>
   </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>1</SoilPhase>
+    <SoilTexture>사토</SoilTexture>
+    <SoilDepth>얕음</SoilDepth>
+  </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>2</SoilPhase>
+    <SoilTexture>식양도</SoilTexture>
+    <SoilDepth>깊음</SoilDepth>
+  </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>3</SoilPhase>
+    <SoilTexture>양토</SoilTexture>
+    <SoilDepth>얕음</SoilDepth>
+  </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>4</SoilPhase>
+    <SoilTexture>식양토</SoilTexture>
+    <SoilDepth>보통</SoilDepth>
+  </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>5</SoilPhase>
+    <SoilTexture>양질사토</SoilTexture>
+    <SoilDepth>보통</SoilDepth>
+  </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>6</SoilPhase>
+    <SoilTexture>식양토</SoilTexture>
+    <SoilDepth>보통</SoilDepth>
+  </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>7</SoilPhase>
+    <SoilTexture>식양토</SoilTexture>
+    <SoilDepth>깊음</SoilDepth>
+  </SoilPhase>
+  <SoilPhase>
+    <SoilPhase>8</SoilPhase>
+    <SoilTexture>양토</SoilTexture>
+    <SoilDepth>보통</SoilDepth>
+  </SoilPhase>
 </GRMStaticDB>
