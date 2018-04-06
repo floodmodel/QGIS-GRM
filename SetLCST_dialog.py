@@ -146,23 +146,31 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
     # LandCover Table 헤더 셋팅
     def SetLandCoverHeader(self):
         # table header set(메이창 테이블 타이틀 설정)
-        self.tlbLandCover.setColumnCount(7)
+        self.tlbLandCover.setColumnCount(5)
+        # self.tlbLandCover.setHorizontalHeaderLabels(
+        #     ['GridValue', 'UserLandCover', 'GRMCode', 'LandCoverE', 'LandCoverK', 'RoughnessCoefficient',
+        #      'ImperviousRatio'])
         self.tlbLandCover.setHorizontalHeaderLabels(
-            ['GridValue', 'UserLandCover', 'GRMCode', 'LandCoverE', 'LandCoverK', 'RoughnessCoefficient',
+            ['GridValue', 'UserLandCover', 'GRMCode', 'RoughnessCoefficient',
              'ImperviousRatio'])
 
     # GreenAmpt Table 헤더 셋팅
     def SetGreenAmptHeader(self):
-        self.tblGreenAmpt.setColumnCount(9)
+        self.tblGreenAmpt.setColumnCount(7)
+        # self.tblGreenAmpt.setHorizontalHeaderLabels(
+        #     ['GridValue', 'USERSoil', 'GRMCode', 'GRMTextureE', 'GRMTextureK', 'Porosity', 'EffectivePorosity',
+        #      'WFSoilSuctionHead', 'HydraulicConductivity'])
         self.tblGreenAmpt.setHorizontalHeaderLabels(
-            ['GridValue', 'USERSoil', 'GRMCode', 'GRMTextureE', 'GRMTextureK', 'Porosity', 'EffectivePorosity',
+            ['GridValue', 'USERSoil', 'GRMCode', 'Porosity', 'EffectivePorosity',
              'WFSoilSuctionHead', 'HydraulicConductivity'])
 
     # SoilDepth 테이블 헤더 셋팅
     def SetSoilDepthHeader(self):
-        self.tblSoilDepth.setColumnCount(6)
+        self.tblSoilDepth.setColumnCount(4)
+        # self.tblSoilDepth.setHorizontalHeaderLabels(
+        #     ['GridValue', 'UserDepthClass', 'GRMCode', 'SoilDepthClassE', 'SoilDepthClassK', 'SoilDepth'])
         self.tblSoilDepth.setHorizontalHeaderLabels(
-            ['GridValue', 'UserDepthClass', 'GRMCode', 'SoilDepthClassE', 'SoilDepthClassK', 'SoilDepth'])
+            ['GridValue', 'UserDepthClass', 'GRMCode', 'SoilDepth'])
 
     # =================================================헤더 셋팅 종료===================================================
 
@@ -393,16 +401,16 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                     item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
                     self.tlbLandCover.setItem(row, 2, QTableWidgetItem(item3))
 
-                    item4 = QtGui.QTableWidgetItem(artikel['GRMLandCoverE'])
-                    item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tlbLandCover.setItem(row, 3, QTableWidgetItem(item4))
+                    # item4 = QtGui.QTableWidgetItem(artikel['GRMLandCoverE'])
+                    # item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tlbLandCover.setItem(row, 3, QTableWidgetItem(item4))
+                    #
+                    # item5 = QtGui.QTableWidgetItem(artikel['GRMLandCoverK'])
+                    # item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tlbLandCover.setItem(row, 4, QTableWidgetItem(item5))
 
-                    item5 = QtGui.QTableWidgetItem(artikel['GRMLandCoverK'])
-                    item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tlbLandCover.setItem(row, 4, QTableWidgetItem(item5))
-
-                    self.tlbLandCover.setItem(row, 5, QTableWidgetItem(artikel['RoughnessCoefficient']))
-                    self.tlbLandCover.setItem(row, 6, QTableWidgetItem(artikel['ImperviousRatio']))
+                    self.tlbLandCover.setItem(row, 3, QTableWidgetItem(artikel['RoughnessCoefficient']))
+                    self.tlbLandCover.setItem(row, 4, QTableWidgetItem(artikel['ImperviousRatio']))
                     row = row + 1
             elif GRM._LandCoverCount ==1:
                     self.tlbLandCover.insertRow(0)
@@ -419,16 +427,16 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                     item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
                     self.tlbLandCover.setItem(row, 2, QTableWidgetItem(item3))
 
-                    item4 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['GRMLandCoverE'])
-                    item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tlbLandCover.setItem(row, 3, QTableWidgetItem(item4))
+                    # item4 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['GRMLandCoverE'])
+                    # item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tlbLandCover.setItem(row, 3, QTableWidgetItem(item4))
+                    #
+                    # item5 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['GRMLandCoverK'])
+                    # item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tlbLandCover.setItem(row, 4, QTableWidgetItem(item5))
 
-                    item5 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['GRMLandCoverK'])
-                    item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tlbLandCover.setItem(row, 4, QTableWidgetItem(item5))
-
-                    self.tlbLandCover.setItem(row, 5, QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['RoughnessCoefficient']))
-                    self.tlbLandCover.setItem(row, 6, QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['ImperviousRatio']))
+                    self.tlbLandCover.setItem(row, 3, QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['RoughnessCoefficient']))
+                    self.tlbLandCover.setItem(row, 4, QTableWidgetItem(GRM._xmltodict['GRMProject']['LandCover']['ImperviousRatio']))
 
         except KeyError:
 #             _util.MessageboxShowError("except False","False")
@@ -457,18 +465,18 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                     item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
                     self.tblGreenAmpt.setItem(row, 2, QTableWidgetItem(item3))
 
-                    item4 = QtGui.QTableWidgetItem(artikel['GRMTextureE'])
-                    item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblGreenAmpt.setItem(row, 3, QTableWidgetItem(item4))
+                    # item4 = QtGui.QTableWidgetItem(artikel['GRMTextureE'])
+                    # item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblGreenAmpt.setItem(row, 3, QTableWidgetItem(item4))
+                    #
+                    # item5 = QtGui.QTableWidgetItem(artikel['GRMTextureK'])
+                    # item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblGreenAmpt.setItem(row, 4, QTableWidgetItem(item4))
 
-                    item5 = QtGui.QTableWidgetItem(artikel['GRMTextureK'])
-                    item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblGreenAmpt.setItem(row, 4, QTableWidgetItem(item4))
-
-                    self.tblGreenAmpt.setItem(row, 5, QTableWidgetItem(artikel['Porosity']))
-                    self.tblGreenAmpt.setItem(row, 6, QTableWidgetItem(artikel['EffectivePorosity']))
-                    self.tblGreenAmpt.setItem(row, 7, QTableWidgetItem(artikel['WFSoilSuctionHead']))
-                    self.tblGreenAmpt.setItem(row, 8, QTableWidgetItem(artikel['HydraulicConductivity']))
+                    self.tblGreenAmpt.setItem(row, 3, QTableWidgetItem(artikel['Porosity']))
+                    self.tblGreenAmpt.setItem(row, 4, QTableWidgetItem(artikel['EffectivePorosity']))
+                    self.tblGreenAmpt.setItem(row, 5, QTableWidgetItem(artikel['WFSoilSuctionHead']))
+                    self.tblGreenAmpt.setItem(row, 6, QTableWidgetItem(artikel['HydraulicConductivity']))
                     row = row + 1
             elif GRM._GreenAmptCount ==1:
                     self.tblGreenAmpt.insertRow(0)
@@ -485,18 +493,18 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                     item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
                     self.tblGreenAmpt.setItem(row, 2, QTableWidgetItem(item3))
 
-                    item4 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['GRMTextureE'])
-                    item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblGreenAmpt.setItem(row, 3, QTableWidgetItem(item4))
+                    # item4 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['GRMTextureE'])
+                    # item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblGreenAmpt.setItem(row, 3, QTableWidgetItem(item4))
+                    #
+                    # item5 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['GRMTextureK'])
+                    # item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblGreenAmpt.setItem(row, 4, QTableWidgetItem(item5))
 
-                    item5 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['GRMTextureK'])
-                    item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblGreenAmpt.setItem(row, 4, QTableWidgetItem(item5))
-
-                    self.tblGreenAmpt.setItem(row, 5, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['Porosity']))
-                    self.tblGreenAmpt.setItem(row, 6, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['EffectivePorosity']))
-                    self.tblGreenAmpt.setItem(row, 7, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['WFSoilSuctionHead']))
-                    self.tblGreenAmpt.setItem(row, 8, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['HydraulicConductivity']))
+                    self.tblGreenAmpt.setItem(row, 3, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['Porosity']))
+                    self.tblGreenAmpt.setItem(row, 4, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['EffectivePorosity']))
+                    self.tblGreenAmpt.setItem(row, 5, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['WFSoilSuctionHead']))
+                    self.tblGreenAmpt.setItem(row, 6, QTableWidgetItem(GRM._xmltodict['GRMProject']['GreenAmptParameter']['HydraulicConductivity']))
 
         except KeyError:
 #             _util.MessageboxShowError("except False", "False")
@@ -526,15 +534,15 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                     item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
                     self.tblSoilDepth.setItem(row, 2, QTableWidgetItem(item3))
 
-                    item4 = QtGui.QTableWidgetItem(artikel['SoilDepthClassE'])
-                    item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblSoilDepth.setItem(row, 3, QTableWidgetItem(item4))
+                    # item4 = QtGui.QTableWidgetItem(artikel['SoilDepthClassE'])
+                    # item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblSoilDepth.setItem(row, 3, QTableWidgetItem(item4))
+                    #
+                    # item5 = QtGui.QTableWidgetItem(artikel['SoilDepthClassK'])
+                    # item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblSoilDepth.setItem(row, 4, QTableWidgetItem(item5))
 
-                    item5 = QtGui.QTableWidgetItem(artikel['SoilDepthClassK'])
-                    item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblSoilDepth.setItem(row, 4, QTableWidgetItem(item5))
-
-                    self.tblSoilDepth.setItem(row, 5, QTableWidgetItem(artikel['SoilDepth']))
+                    self.tblSoilDepth.setItem(row, 3, QTableWidgetItem(artikel['SoilDepth']))
                     row = row + 1
             elif  GRM._SoilDepthCount == 1:
                     self.tblSoilDepth.insertRow(0)
@@ -551,15 +559,15 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                     item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
                     self.tblSoilDepth.setItem(row, 2, QTableWidgetItem(item3))
 
-                    item4 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['SoilDepth']['SoilDepthClassE'])
-                    item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblSoilDepth.setItem(row, 3, QTableWidgetItem(item4))
+                    # item4 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['SoilDepth']['SoilDepthClassE'])
+                    # item4.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblSoilDepth.setItem(row, 3, QTableWidgetItem(item4))
+                    #
+                    # item5 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['SoilDepth']['SoilDepthClassK'])
+                    # item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                    # self.tblSoilDepth.setItem(row, 4, QTableWidgetItem(item5))
 
-                    item5 = QtGui.QTableWidgetItem(GRM._xmltodict['GRMProject']['SoilDepth']['SoilDepthClassK'])
-                    item5.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    self.tblSoilDepth.setItem(row, 4, QTableWidgetItem(item5))
-
-                    self.tblSoilDepth.setItem(row, 5, QTableWidgetItem(GRM._xmltodict['GRMProject']['SoilDepth']['SoilDepth']))
+                    self.tblSoilDepth.setItem(row, 3, QTableWidgetItem(GRM._xmltodict['GRMProject']['SoilDepth']['SoilDepth']))
 
         except KeyError:
 #             _util.MessageboxShowError("except False", "False")
@@ -971,20 +979,20 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                 GRMLandCoverCode.text = self.tlbLandCover.item(row, 2).text()
                 child.append(GRMLandCoverCode)
 
-                GRMLandCoverE = ET.Element("GRMLandCoverE")
-                GRMLandCoverE.text = self.tlbLandCover.item(row, 3).text()
-                child.append(GRMLandCoverE)
-
-                GRMLandCoverK = ET.Element("GRMLandCoverK")
-                GRMLandCoverK.text = self.tlbLandCover.item(row, 4).text()
-                child.append(GRMLandCoverK)
+                # GRMLandCoverE = ET.Element("GRMLandCoverE")
+                # GRMLandCoverE.text = self.tlbLandCover.item(row, 3).text()
+                # child.append(GRMLandCoverE)
+                #
+                # GRMLandCoverK = ET.Element("GRMLandCoverK")
+                # GRMLandCoverK.text = self.tlbLandCover.item(row, 4).text()
+                # child.append(GRMLandCoverK)
 
                 RoughnessCoefficient = ET.Element("RoughnessCoefficient")
-                RoughnessCoefficient.text = self.tlbLandCover.item(row, 5).text()
+                RoughnessCoefficient.text = self.tlbLandCover.item(row, 3).text()
                 child.append(RoughnessCoefficient)
 
                 ImperviousRatio = ET.Element("ImperviousRatio")
-                ImperviousRatio.text = self.tlbLandCover.item(row, 6).text()
+                ImperviousRatio.text = self.tlbLandCover.item(row, 4).text()
                 child.append(ImperviousRatio)
             #_util.MessageboxShowError("save", "2-2")
 
@@ -1037,28 +1045,28 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
             GRMCode.text = self.tblGreenAmpt.item(row, 2).text()
             child.append(GRMCode)
 
-            GRMTextureE = ET.Element("GRMTextureE")
-            GRMTextureE.text = self.tblGreenAmpt.item(row, 3).text()
-            child.append(GRMTextureE)
-
-            GRMTextureK = ET.Element("GRMTextureK")
-            GRMTextureK.text = self.tblGreenAmpt.item(row, 4).text()
-            child.append(GRMTextureK)
+            # GRMTextureE = ET.Element("GRMTextureE")
+            # GRMTextureE.text = self.tblGreenAmpt.item(row, 3).text()
+            # child.append(GRMTextureE)
+            #
+            # GRMTextureK = ET.Element("GRMTextureK")
+            # GRMTextureK.text = self.tblGreenAmpt.item(row, 4).text()
+            # child.append(GRMTextureK)
 
             Porosity = ET.Element("Porosity")
-            Porosity.text = self.tblGreenAmpt.item(row, 5).text()
+            Porosity.text = self.tblGreenAmpt.item(row, 3).text()
             child.append(Porosity)
 
             EffectivePorosity = ET.Element("EffectivePorosity")
-            EffectivePorosity.text = self.tblGreenAmpt.item(row, 6).text()
+            EffectivePorosity.text = self.tblGreenAmpt.item(row, 4).text()
             child.append(EffectivePorosity)
 
             WFSoilSuctionHead = ET.Element("WFSoilSuctionHead")
-            WFSoilSuctionHead.text = self.tblGreenAmpt.item(row, 7).text()
+            WFSoilSuctionHead.text = self.tblGreenAmpt.item(row, 5).text()
             child.append(WFSoilSuctionHead)
 
             HydraulicConductivity = ET.Element("HydraulicConductivity")
-            HydraulicConductivity.text = self.tblGreenAmpt.item(row, 8).text()
+            HydraulicConductivity.text = self.tblGreenAmpt.item(row, 6).text()
             child.append(HydraulicConductivity)
 
         # xmltree.write("C:\Users\hermesys\Desktop\Sct2.gmp")
@@ -1109,16 +1117,16 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
             GRMDepthCode.text = self.tblSoilDepth.item(row, 2).text()
             child.append(GRMDepthCode)
 
-            SoilDepthClassE = ET.Element("SoilDepthClassE")
-            SoilDepthClassE.text = self.tblSoilDepth.item(row, 3).text()
-            child.append(SoilDepthClassE)
-
-            SoilDepthClassK = ET.Element("SoilDepthClassK")
-            SoilDepthClassK.text = self.tblSoilDepth.item(row, 4).text()
-            child.append(SoilDepthClassK)
+            # SoilDepthClassE = ET.Element("SoilDepthClassE")
+            # SoilDepthClassE.text = self.tblSoilDepth.item(row, 3).text()
+            # child.append(SoilDepthClassE)
+            #
+            # SoilDepthClassK = ET.Element("SoilDepthClassK")
+            # SoilDepthClassK.text = self.tblSoilDepth.item(row, 4).text()
+            # child.append(SoilDepthClassK)
 
             SoilDepth = ET.Element("SoilDepth")
-            SoilDepth.text = self.tblSoilDepth.item(row, 5).text()
+            SoilDepth.text = self.tblSoilDepth.item(row, 3).text()
             child.append(SoilDepth)
 
         # xmltree.write("C:\Users\hermesys\Desktop\Sct2.gmp")
@@ -1199,15 +1207,15 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
         # 테이블 초기화
         table.clear()
         if type == "LandCover":
-            table.setColumnCount(7)
-            table.setHorizontalHeaderLabels(['GridValue', 'UserLandCover', 'GRMCode', 'LandCoverE', 'LandCoverK', 'RoughnessCoefficient','ImperviousRatio'])
+            table.setColumnCount(5)
+            table.setHorizontalHeaderLabels(['GridValue', 'UserLandCover', 'GRMCode','RoughnessCoefficient','ImperviousRatio'])
 
         elif type == "GreenAmpt":
-            table.setColumnCount(9)
-            table.setHorizontalHeaderLabels(['GridValue', 'USERSoil', 'GRMCode', 'GRMTextureE', 'GRMTextureK', 'Porosity', 'EffectivePorosity','WFSoilSuctionHead', 'HydraulicConductivity'])
+            table.setColumnCount(7)
+            table.setHorizontalHeaderLabels(['GridValue', 'USERSoil', 'GRMCode', 'Porosity', 'EffectivePorosity','WFSoilSuctionHead', 'HydraulicConductivity'])
         elif type == "SoilDepth":
-            table.setColumnCount(6)
-            table.setHorizontalHeaderLabels(['GridValue', 'UserDepthClass', 'GRMCode', 'SoilDepthClassE', 'SoilDepthClassK', 'SoilDepth'])
+            table.setColumnCount(4)
+            table.setHorizontalHeaderLabels(['GridValue', 'UserDepthClass', 'GRMCode', 'SoilDepth'])
         table.setRowCount(int(len(lines)))
 
         try:
@@ -1222,7 +1230,14 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
                     item2 = QtGui.QTableWidgetItem(splitsdata[1].decode('cp949'))
                     item2.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
                     table.setItem(i, 1, QTableWidgetItem(item2))
-                    self.SetMainTableValue(splitsdata[1].decode('cp949').strip(),table,(i),type)
+
+                    txtvalue=splitsdata[1].decode('cp949')
+                    if txtvalue.upper()=="USER":
+                        user = True
+                    else:
+                        user = False
+
+                    self.SetMainTableValue(splitsdata[1].decode('cp949').strip(),table,(i),type,user)
         except Exception as es:
            _util.MessageboxShowError("GRM",str(es))
             #for i in range(0, len(lines)):
@@ -1251,7 +1266,7 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
         f2.close()
 
     # 메인창 Land cover tablewidget 테이블에 데이터 셋팅 (3~ 이후 컬럼의 데이터 값을 StaticDB 셋팅)
-    def SetMainTableValue(self, value, widget, row, type):
+    def SetMainTableValue(self, value, widget, row, type,user):
         path = _util.StaticDB
 
         # _util.MessageboxShowError("path",path)
@@ -1259,64 +1274,57 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
         root = doc.getroot()
         if type == "LandCover":
             for element in root.findall("{http://tempuri.org/DataSet1.xsd}LandCoverParameter"):
-                if element.findtext("{http://tempuri.org/DataSet1.xsd}LandCoverK") == value :
-
+                if user:
                     item1 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode"))
                     item1.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 2, QTableWidgetItem(item1))
-
-                    item2 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}LandCoverE"))
-                    item2.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 3, QTableWidgetItem(item2))
-
-                    item3 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}LandCoverK"))
-                    item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 4, QTableWidgetItem(item3))
-
-
-                    widget.setItem(row, 5, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}RoughnessCoefficient")))
-                    widget.setItem(row, 6, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}ImperviousRatio")))
+                    widget.setItem(row, 2, QTableWidgetItem("USER"))
+                    widget.setItem(row, 3, QTableWidgetItem(""))
+                    widget.setItem(row, 4, QTableWidgetItem(""))
                     break                    
+                else:
+                    if element.findtext("{http://tempuri.org/DataSet1.xsd}LandCoverK") == value :
+                        item1 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode"))
+                        item1.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                        widget.setItem(row, 2, QTableWidgetItem(item1))
+                        widget.setItem(row, 3, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}RoughnessCoefficient")))
+                        widget.setItem(row, 4, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}ImperviousRatio")))
+                        break                    
 
         elif type == "GreenAmpt":
             for element in root.findall("{http://tempuri.org/DataSet1.xsd}GreenAmptSoilParameter"):
-                if element.findtext("{http://tempuri.org/DataSet1.xsd}SoilTextureK") == value :
-
+                if user:
                     item1 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode"))
                     item1.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 2, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode")))
-
-                    item2 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}SoilTextureE"))
-                    item2.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 3, QTableWidgetItem(item2))
-
-                    item3 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}SoilTextureK"))
-                    item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 4, QTableWidgetItem(item3))
-
-
-                    widget.setItem(row, 5, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}PorosityDefault")))
-                    widget.setItem(row, 6, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}EffectivePorosityDefault")))
-                    widget.setItem(row, 7, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}WFSoilSuctionHeadDefault")))
-                    widget.setItem(row, 8, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}HydraulicConductivity")))
-                    break
+                    widget.setItem(row, 2, QTableWidgetItem("USER"))
+                    widget.setItem(row, 3, QTableWidgetItem(""))
+                    widget.setItem(row, 4, QTableWidgetItem(""))
+                    widget.setItem(row, 5, QTableWidgetItem(""))
+                    widget.setItem(row, 6, QTableWidgetItem(""))
+                else:
+                    if element.findtext("{http://tempuri.org/DataSet1.xsd}SoilTextureK") == value :
+                        item1 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode"))
+                        item1.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                        widget.setItem(row, 2, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode")))
+                        widget.setItem(row, 3, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}PorosityDefault")))
+                        widget.setItem(row, 4, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}EffectivePorosityDefault")))
+                        widget.setItem(row, 5, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}WFSoilSuctionHeadDefault")))
+                        widget.setItem(row, 6, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}HydraulicConductivity")))
+                        break
         elif type == "SoilDepth":
             for element in root.findall("{http://tempuri.org/DataSet1.xsd}SoilDepthParameter"):
-                if element.findtext("{http://tempuri.org/DataSet1.xsd}SoilDepthClassK") == value :
-
+                if user:
                     item1 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode"))
                     item1.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 2,QTableWidgetItem(item1))
-
-                    item2 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}SoilDepthClassE"))
-                    item2.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 3, QTableWidgetItem(item2))
-
-                    item3 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}SoilDepthClassK"))
-                    item3.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
-                    widget.setItem(row, 4, QTableWidgetItem(item3))
-                    widget.setItem(row, 5, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}SoilDepthDefault")))
+                    widget.setItem(row, 2,QTableWidgetItem("USER"))
+                    widget.setItem(row, 3, QTableWidgetItem(""))
                     break
+                else:
+                    if element.findtext("{http://tempuri.org/DataSet1.xsd}SoilDepthClassK") == value :
+                        item1 = QtGui.QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}GRMCode"))
+                        item1.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+                        widget.setItem(row, 2,QTableWidgetItem(item1))
+                        widget.setItem(row, 3, QTableWidgetItem(element.findtext("{http://tempuri.org/DataSet1.xsd}SoilDepthDefault")))
+                        break
 
     # # Qdilog 창에 Qtablewidget 셋팅
     def aboutApp(self, type,row):
@@ -1503,11 +1511,19 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
             item5 = tableWidget.item(row, 3)
             item6 = tableWidget.item(row, 4)
             
-            self.tlbLandCover.item(_SelectRow, 3).setText(item2.text())
-            self.tlbLandCover.item(_SelectRow, 4).setText(item3.text())
+            #self.tlbLandCover.item(_SelectRow, 3).setText(item2.text())
+            #self.tlbLandCover.item(_SelectRow, 4).setText(item3.text())
+            #self.tlbLandCover.item(_SelectRow, 2).setText(item4.text())
+            #self.tlbLandCover.item(_SelectRow, 5).setText(item5.text())
+            #self.tlbLandCover.item(_SelectRow, 6).setText(item6.text())            
+            
+
             self.tlbLandCover.item(_SelectRow, 2).setText(item4.text())
-            self.tlbLandCover.item(_SelectRow, 5).setText(item5.text())
-            self.tlbLandCover.item(_SelectRow, 6).setText(item6.text())
+            self.tlbLandCover.item(_SelectRow, 3).setText(item5.text())
+            self.tlbLandCover.item(_SelectRow, 4).setText(item6.text())
+            #self.tlbLandCover.item(_SelectRow, 2).setText(item4.text())
+            #self.tlbLandCover.item(_SelectRow, 5).setText(item5.text())
+            #self.tlbLandCover.item(_SelectRow, 6).setText(item6.text())
             # 메시지 박스 종료
             self.paranet.done(1)
 
@@ -1520,13 +1536,17 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
             item7 = tableWidget.item(row, 12)
             item8 = tableWidget.item(row, 13)
 
-            self.tblGreenAmpt.item(_SelectRow, 3).setText(item2.text())
-            self.tblGreenAmpt.item(_SelectRow, 4).setText(item3.text())
+
+            #self.tblGreenAmpt.item(_SelectRow, 3).setText(item2.text())
+            #self.tblGreenAmpt.item(_SelectRow, 4).setText(item3.text())
+
+
+
             self.tblGreenAmpt.item(_SelectRow, 2).setText(item4.text())
-            self.tblGreenAmpt.item(_SelectRow, 5).setText(item5.text())
-            self.tblGreenAmpt.item(_SelectRow, 6).setText(item6.text())
-            self.tblGreenAmpt.item(_SelectRow, 7).setText(item7.text())
-            self.tblGreenAmpt.item(_SelectRow, 8).setText(item8.text())
+            self.tblGreenAmpt.item(_SelectRow, 3).setText(item5.text())
+            self.tblGreenAmpt.item(_SelectRow, 4).setText(item6.text())
+            self.tblGreenAmpt.item(_SelectRow, 5).setText(item7.text())
+            self.tblGreenAmpt.item(_SelectRow, 6).setText(item8.text())
             # 메시지 박스 종료
             self.paranet.done(1)
 
@@ -1537,9 +1557,9 @@ class SetLCST_StetupDialog(QtGui.QDialog, FORM_CLASS):
             item5 = tableWidget.item(row, 5)
 
             self.tblSoilDepth.item(_SelectRow, 2).setText(item2.text())
-            self.tblSoilDepth.item(_SelectRow, 3).setText(item3.text())
-            self.tblSoilDepth.item(_SelectRow, 4).setText(item4.text())
-            self.tblSoilDepth.item(_SelectRow, 5).setText(item5.text())
+            #self.tblSoilDepth.item(_SelectRow, 3).setText(item3.text())
+            #self.tblSoilDepth.item(_SelectRow, 4).setText(item4.text())
+            self.tblSoilDepth.item(_SelectRow, 3).setText(item5.text())
             # 메시지 박스 종료
             self.paranet.done(1)
 

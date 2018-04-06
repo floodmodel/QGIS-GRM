@@ -195,10 +195,19 @@ class xmls:
                     Datavalue = ""
                 if self.XML_element_GreenAmptParameter[i] == "GRMCode" and (Datavalue == "" or Datavalue == None):
                     Datavalue = ""
-                if self.XML_element_GreenAmptParameter[i] == "GRMTextureE" and (Datavalue == "" or Datavalue == None):
-                    Datavalue = ""
-                if self.XML_element_GreenAmptParameter[i] == "GRMTextureK" and (Datavalue == "" or Datavalue == None):
-                    Datavalue = ""
+
+                if self.XML_element_GreenAmptParameter[i] == "GRMTextureE":
+                    root.remove("{http://tempuri.org/GRMProject.xsd}" + self.XML_element_GreenAmptParameter[i])
+                
+                if self.XML_element_GreenAmptParameter[i] == "GRMTextureK" :
+                    root.remove("{http://tempuri.org/GRMProject.xsd}" + self.XML_element_GreenAmptParameter[i])
+
+
+                # if self.XML_element_GreenAmptParameter[i] == "GRMTextureE" and (Datavalue == "" or Datavalue == None):
+                #     Datavalue = ""
+                # if self.XML_element_GreenAmptParameter[i] == "GRMTextureK" and (Datavalue == "" or Datavalue == None):
+                #     Datavalue = ""
+
                 if self.XML_element_GreenAmptParameter[i] == "Porosity" and (Datavalue == "" or Datavalue == None):
                     Datavalue = ""
                 if self.XML_element_GreenAmptParameter[i] == "EffectivePorosity" and (Datavalue == "" or Datavalue == None):
@@ -226,10 +235,15 @@ class xmls:
                     Datavalue = ""
                 if self.XML_element_SoilDepth[i] == "GRMCode" and (Datavalue == "" or Datavalue == None):
                     Datavalue = ""
-                if self.XML_element_SoilDepth[i] == "SoilDepthClassE" and (Datavalue == "" or Datavalue == None):
-                    Datavalue = ""
-                if self.XML_element_SoilDepth[i] == "SoilDepthClassK" and (Datavalue == "" or Datavalue == None):
-                    Datavalue = ""
+                if self.XML_element_SoilDepth[i] == "SoilDepthClassE":
+                    root.remove("{http://tempuri.org/GRMProject.xsd}" + self.XML_element_SoilDepth[i])
+                if self.XML_element_SoilDepth[i] == "SoilDepthClassK":
+                    root.remove("{http://tempuri.org/GRMProject.xsd}" + self.XML_element_SoilDepth[i])
+
+                # if self.XML_element_SoilDepth[i] == "SoilDepthClassE" and (Datavalue == "" or Datavalue == None):
+                #     Datavalue = ""
+                # if self.XML_element_SoilDepth[i] == "SoilDepthClassK" and (Datavalue == "" or Datavalue == None):
+                #     Datavalue = ""
                 if self.XML_element_SoilDepth[i] == "SoilDeptht" and (Datavalue == "" or Datavalue == None):
                     Datavalue = ""
                 ET.SubElement(SoilDepth, self.XML_element_SoilDepth[i]).text = Datavalue
@@ -246,10 +260,15 @@ class xmls:
                     Datavalue = ""
                 if self.XML_element_LandCover[i] == "GRMCode" and (Datavalue == "" or Datavalue == None):
                     Datavalue = ""
-                if self.XML_element_LandCover[i] == "GRMLandCoverE" and (Datavalue == "" or Datavalue == None):
-                    Datavalue = ""
-                if self.XML_element_LandCover[i] == "GRMLandCoverK" and (Datavalue == "" or Datavalue == None):
-                    Datavalue = ""
+
+                if self.XML_element_LandCover[i] == "GRMLandCoverE" :
+                    root.remove("{http://tempuri.org/GRMProject.xsd}" + self.XML_element_LandCover[i])
+                if self.XML_element_LandCover[i] == "GRMLandCoverK":
+                    root.remove("{http://tempuri.org/GRMProject.xsd}" + self.XML_element_LandCover[i])
+                # if self.XML_element_LandCover[i] == "GRMLandCoverE" and (Datavalue == "" or Datavalue == None):
+                #     Datavalue = ""
+                # if self.XML_element_LandCover[i] == "GRMLandCoverK" and (Datavalue == "" or Datavalue == None):
+                #     Datavalue = ""
                 if self.XML_element_LandCover[i] == "RoughnessCoefficient" and (Datavalue == "" or Datavalue == None):
                     Datavalue = ""
                 if self.XML_element_LandCover[i] == "ImperviousRatio" and (Datavalue == "" or Datavalue == None):
@@ -417,8 +436,8 @@ class xmls:
         self.XML_element_GreenAmptParameter.append('GridValue')
         self.XML_element_GreenAmptParameter.append('USERSoil')
         self.XML_element_GreenAmptParameter.append('GRMCode')
-        self.XML_element_GreenAmptParameter.append('GRMTextureE')
-        self.XML_element_GreenAmptParameter.append('GRMTextureK')
+        # self.XML_element_GreenAmptParameter.append('GRMTextureE')
+        # self.XML_element_GreenAmptParameter.append('GRMTextureK')
         self.XML_element_GreenAmptParameter.append('Porosity')
         self.XML_element_GreenAmptParameter.append('EffectivePorosity')
         self.XML_element_GreenAmptParameter.append('WFSoilSuctionHead')
@@ -429,8 +448,8 @@ class xmls:
         self.XML_element_SoilDepth.append('GridValue')
         self.XML_element_SoilDepth.append('UserDepthClass')
         self.XML_element_SoilDepth.append('GRMCode')
-        self.XML_element_SoilDepth.append('SoilDepthClassE')
-        self.XML_element_SoilDepth.append('SoilDepthClassK')
+        # self.XML_element_SoilDepth.append('SoilDepthClassE')
+        # self.XML_element_SoilDepth.append('SoilDepthClassK')
         # python 버그???  SoilDepth 상위 태그와 subelement 이름이 같으면 값이 안들어감
         # 그래서 이름 다르게 넣고 나중에 Replace
         self.XML_element_SoilDepth.append('SoilDeptht')
@@ -442,8 +461,8 @@ class xmls:
         self.XML_element_LandCover.append('GridValue')
         self.XML_element_LandCover.append('UserLandCover')
         self.XML_element_LandCover.append('GRMCode')
-        self.XML_element_LandCover.append('GRMLandCoverE')
-        self.XML_element_LandCover.append('GRMLandCoverK')
+        # self.XML_element_LandCover.append('GRMLandCoverE')
+        # self.XML_element_LandCover.append('GRMLandCoverK')
         self.XML_element_LandCover.append('RoughnessCoefficient')
         self.XML_element_LandCover.append('ImperviousRatio')
 

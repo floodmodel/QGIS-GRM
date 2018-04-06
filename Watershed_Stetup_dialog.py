@@ -313,10 +313,16 @@ class Watershed_StetupDialog(QtGui.QDialog, FORM_CLASS):
             self.ChannelWidthFile=""
         # Core DLL 연동 작업 선행 처리
 
+        FDType = GRM._xmltodict['GRMProject']['ProjectSettings']['FlowDirectionType']
+
+
         global _wsinfo
-        _wsinfo = cGetWatershedInfo(self.WatershedFile, self.SlopeFile, self.FlowDirectionFile, self.FlowAccumFile,
+        _wsinfo = cGetWatershedInfo(FDType,self.WatershedFile, self.SlopeFile, self.FlowDirectionFile, self.FlowAccumFile,
                                     self.StreamFile, self.LandCoverFile, self.SoilTextureFile, self.SoilDepthFile,
-                                    self.InitialSoilSaturationRatioFile, self.InitialChannelFlowFile)
+                                    self.InitialSoilSaturationRatioFile, self.InitialChannelFlowFile) 
+        #_wsinfo = cGetWatershedInfo(self.WatershedFile, self.SlopeFile, self.FlowDirectionFile, self.FlowAccumFile,
+        #                            self.StreamFile, self.LandCoverFile, self.SoilTextureFile, self.SoilDepthFile,
+        #                            self.InitialSoilSaturationRatioFile, self.InitialChannelFlowFile)
         # WatchPoint Tab table에 데이터만 채워 넣는 방식으로 변수로 값을 받을 필요가 없음 대신 전역 변수로 값 받읍
         global _StreamWSID
         _StreamWSID = _wsinfo.mostDownStreamWSID()
