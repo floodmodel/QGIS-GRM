@@ -368,7 +368,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Use soil depth layer</string>
+     <string>Use soil texture layer</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="rbtUseConstTextureAtt">
